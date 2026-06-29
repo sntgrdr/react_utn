@@ -9,7 +9,7 @@ function ServiceCard({ name, price, src }) {
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-400">
-        <span className="text-white uppercase font-bold tracking-widest text-lg opacity-0 translate-y-5 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400">
+        <span className="text-white uppercase font-bold tracking-widest text-lg opacity-0 translate-y-5 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400 text-center">
           {name}
         </span>
       </div>
