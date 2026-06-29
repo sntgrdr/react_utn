@@ -1,126 +1,124 @@
-# Magnific Peluquería — UTN Frontend Final Project
+# Magnific Peluquería — Proyecto Final UTN Frontend
 
-React SPA for a fictional hair salon, built as the final project for the UTN Frontend Development course. Originally maquetted in HTML/CSS and fully migrated to React with Vite.
+SPA en React para una peluquería ficticia, desarrollada como proyecto final del ciclo de Desarrollo Frontend en UTN. Originalmente maquetada en HTML/CSS y migrada completamente a React con Vite.
 
-## What the app does
+## Sobre el proyecto
 
-A single-page website for "Magnific Peluquería" with four sections reachable via the sticky navbar:
+Sitio web de una sola página para "Magnific Peluquería" con cuatro secciones accesibles desde la barra de navegación fija:
 
-- **Home** — video hero, two feature cards (cuts & treatments), and client reviews.
-- **Gallery** — grid of services with a hover reveal effect (name + price overlay).
-- **Contact** — controlled form for sending messages; logs data to console on submit and resets on demand.
-- **Booking** — multi-step appointment flow: pick a service from an infinite carousel → pick a date from a calendar → fill out a booking form that replaces the calendar panel on confirm.
+- **Home** — hero con video, dos tarjetas destacadas (cortes y tratamientos) y reseñas de clientes.
+- **Galería** — grilla de servicios con efecto hover (superposición con nombre y precio).
+- **Contacto** — formulario controlado para enviar mensajes; los datos se muestran por consola al enviar y se puede resetear.
+- **Reservas** — flujo de reserva en múltiples pasos: elegir un servicio del carrusel infinito → elegir una fecha en el calendario → completar un formulario que reemplaza el panel del calendario al confirmar.
 
 ---
 
-## Tech stack
+## Tecnologías utilizadas
 
-| Tool | Role |
+| Herramienta | Rol |
 |---|---|
-| React 19 + Vite | Project base |
-| React Router v6 | Routing + one-page section anchors |
-| Tailwind CSS v4 | All component styling |
-| shadcn/ui | Calendar and Carousel components |
-| Bootstrap Icons | Icon set (`bi bi-*` classes) |
-| PropTypes | Prop validation on all components that receive props |
+| React 19 + Vite | Base del proyecto |
+| React Router v6 | Enrutamiento + anclas de navegación dentro de la página |
+| Tailwind CSS v4 | Estilos de todos los componentes |
+| shadcn/ui | Componentes Calendar y Carousel |
+| Bootstrap Icons | Iconografía (`bi bi-*`) |
+| PropTypes | Validación de props en todos los componentes que las reciben |
 
 ---
 
-## Project structure
+## Estructura del proyecto
 
 ```
-react_web/
-└── src/
-    ├── App.jsx                  # Root — connects all pages via Router
-    ├── main.jsx                 # Entry point — mounts BrowserRouter
-    ├── assets/                  # Static images and video
-    │   └── services_imgs/       # One image per service
-    ├── components/
-    │   ├── Navbar.jsx           # Sticky nav with anchor links
-    │   ├── Footer.jsx           # Reusable footer
-    │   ├── ServiceCard.jsx      # Card component — receives name, price, src as props
-    │   ├── ServicePicker.jsx    # Renders services array as a ServiceCard grid
-    │   ├── ServicesCarousel.jsx # Infinite drag carousel for service selection
-    │   ├── BookingCalendar.jsx  # shadcn Calendar wrapper — disabled past dates
-    │   ├── BookingForm.jsx      # Confirmation form — receives service + date as props
-    │   └── ui/                  # shadcn/ui generated components (calendar, carousel, button)
-    ├── data/
-    │   └── services.js          # Service catalog array (id, name, price, src)
-    ├── hooks/
-    │   └── useContactForm.jsx   # Custom hook — manages name/email/message state
-    └── pages/
-        ├── Home.jsx
-        ├── Gallery.jsx
-        ├── Contact.jsx
-        └── Booking.jsx
+src/
+├── App.jsx                  # Raíz — conecta todas las páginas mediante Router
+├── main.jsx                 # Punto de entrada — monta BrowserRouter
+├── assets/                  # Imágenes estáticas y video
+│   └── services_imgs/       # Una imagen por cada servicio
+├── components/
+│   ├── Navbar.jsx           # Barra de navegación fija con anclas
+│   ├── Footer.jsx           # Footer reutilizable
+│   ├── ServiceCard.jsx      # Componente tarjeta — recibe name, price, src como props
+│   ├── ServicePicker.jsx    # Renderiza el array de servicios como grilla de ServiceCard
+│   ├── ServicesCarousel.jsx # Carrusel infinito con arrastre para seleccionar servicio
+│   ├── BookingCalendar.jsx  # Wrapper del Calendar de shadcn — deshabilita fechas pasadas
+│   ├── BookingForm.jsx      # Formulario de confirmación — recibe servicio y fecha como props
+│   └── ui/                  # Componentes generados por shadcn/ui (calendar, carousel, button)
+├── data/
+│   └── services.js          # Array de servicios (id, name, price, src)
+├── hooks/
+│   └── useContactForm.jsx   # Custom hook — maneja el estado name/email/message
+└── pages/
+    ├── Home.jsx
+    ├── Gallery.jsx
+    ├── Contact.jsx
+    └── Booking.jsx
 ```
 
 ---
 
-## Getting started
+## Cómo ejecutar el proyecto
 
 ```bash
-cd react_web
 npm install
 npm run dev
 ```
 
 ---
 
-## Acceptance criteria
+## Criterios de aceptación
 
-### 1. React project structure
+### 1. Estructura principal en React
 
-| Requirement | Implementation |
+| Requisito | Implementación |
 |---|---|
-| New project using Vite | Bootstrapped with `npm create vite@latest -- --template react` |
+| Proyecto nuevo con Vite | Inicializado con `npm create vite@latest -- --template react` |
 | `src/components/` | Navbar, Footer, ServiceCard, ServicePicker, ServicesCarousel, BookingCalendar, BookingForm |
-| `src/assets/` | Images (`home_professional_cut.jpg`, `home_professional_treatment.jpg`, `services_imgs/`) and video (`home_hairsalon_video.mp4`) |
-| `src/hooks/` | `useContactForm.jsx` — encapsulates `formData` state, `handleChange`, `handleSubmit`, `handleReset` |
-| `App.jsx` as root connector | `App.jsx` renders all four pages inside a single `Route path="/"` so they share one scroll context |
+| `src/assets/` | Imágenes (`home_professional_cut.jpg`, `home_professional_treatment.jpg`, `services_imgs/`) y video (`home_hairsalon_video.mp4`) |
+| `src/hooks/` | `useContactForm.jsx` — encapsula el estado `formData`, `handleChange`, `handleSubmit`, `handleReset` |
+| `App.jsx` como conector principal | `App.jsx` renderiza las cuatro páginas dentro de un único `Route path="/"` para que compartan el mismo contexto de scroll |
 
-### 2. Componentization
+### 2. Componentización
 
-| Requirement | Implementation |
+| Requisito | Implementación |
 |---|---|
-| **Navbar** | `Navbar.jsx` — sticky, reusable, uses `<a href="#section">` anchor links and `NavLink` for the logo |
-| **Home** | `Home.jsx` — hero with video, two feature cards with images and text, reviews section |
-| **Cards** | `ServiceCard.jsx` — receives `name` (string), `price` (number), `src` (string) as props; PropTypes declared |
-| **Gallery** | `Gallery.jsx` → `ServicePicker.jsx` → `ServiceCard.jsx` — services array from `data/services.js` passed as spread props to each card |
-| **Contact** | `Contact.jsx` — fully controlled form; all input values live in `useContactForm` state |
-| **Footer** | `Footer.jsx` — reusable footer component |
+| **Navbar** | `Navbar.jsx` — fija, reutilizable, usa `<a href="#seccion">` para navegar entre secciones y `NavLink` para el logo |
+| **Home** | `Home.jsx` — hero con video, dos tarjetas con imágenes y texto, sección de reseñas |
+| **Cards** | `ServiceCard.jsx` — recibe `name` (string), `price` (number), `src` (string) como props; PropTypes declarados |
+| **Gallery** | `Gallery.jsx` → `ServicePicker.jsx` → `ServiceCard.jsx` — el array de servicios de `data/services.js` se pasa como spread props a cada tarjeta |
+| **Contact** | `Contact.jsx` — formulario completamente controlado; todos los valores de los inputs viven en el estado de `useContactForm` |
+| **Footer** | `Footer.jsx` — componente footer reutilizable |
 | **PropTypes** | `ServiceCard` (name, price, src), `BookingCalendar` (selectedDate: `Date`, onSelectDate: `func`), `BookingForm` (service: `object`, date: `Date`, onConfirm/onCancel: `func`), `ServicesCarousel` (selected: `object`, onSelect: `func`) |
 
-### 3. React interactivity
+### 3. Interactividad con React
 
-| Requirement | Implementation |
+| Requisito | Implementación |
 |---|---|
-| `useState` for form inputs | `useContactForm.jsx` manages `{ name, email, message }` with a single `useState` |
-| Submit handling | `handleSubmit` calls `event.preventDefault()`, logs all field values to console |
-| Reset handling | `handleReset` resets `formData` to empty strings; wired to the "Restablecer" button |
-| `event.preventDefault()` | Present in `useContactForm.jsx` — prevents page reload on form submit |
-| Additional state management | `Booking.jsx` manages `selectedService`, `selectedDate`, and `showForm` — conditional rendering switches between the calendar panel and `BookingForm` based on user selections |
+| `useState` para inputs del formulario | `useContactForm.jsx` maneja `{ name, email, message }` con un único `useState` |
+| Manejo del submit | `handleSubmit` llama a `event.preventDefault()` y muestra todos los valores por consola |
+| Manejo del reset | `handleReset` resetea `formData` a strings vacíos; conectado al botón "Restablecer" |
+| `event.preventDefault()` | Presente en `useContactForm.jsx` — evita la recarga de la página al enviar el formulario |
+| Estado adicional | `Booking.jsx` maneja `selectedService`, `selectedDate` y `showForm` — el renderizado condicional alterna entre el panel del calendario y `BookingForm` según las selecciones del usuario |
 
-### 4. Styles
+### 4. Estilos
 
-| Requirement | Implementation |
+| Requisito | Implementación |
 |---|---|
-| Component styles | Tailwind CSS v4 utility classes applied directly in JSX — no component exceeds 10 custom CSS rules, so no separate CSS files are needed |
-| Up to 2 library components | **shadcn/ui Calendar** (date picker in `BookingCalendar.jsx`) and **shadcn/ui Carousel** (service selector in `ServicesCarousel.jsx`), fulfilling the same role as the 2 allowed Bootstrap components |
+| Estilos por componente | Clases utilitarias de Tailwind CSS v4 aplicadas directamente en el JSX — ningún componente supera las 10 reglas CSS propias, por lo que no se requieren archivos CSS separados |
+| Hasta 2 componentes de librería | **shadcn/ui Calendar** (selector de fecha en `BookingCalendar.jsx`) y **shadcn/ui Carousel** (selector de servicio en `ServicesCarousel.jsx`), cumpliendo el mismo rol que los 2 componentes de Bootstrap permitidos |
 
-> Note: Bootstrap was not used. shadcn/ui was chosen as a more React-native alternative — it copies component source directly into the project rather than adding an external dependency.
+> Nota: no se utilizó Bootstrap. Se eligió shadcn/ui como alternativa más nativa para React — copia el código fuente del componente directamente en el proyecto en lugar de agregar una dependencia externa.
 
-### 5. Navigation
+### 5. Navegación
 
-| Requirement | Implementation |
+| Requisito | Implementación |
 |---|---|
-| React Router v6 | `BrowserRouter` wraps the app in `main.jsx`; `Routes` and `Route` defined in `App.jsx` |
-| Section navigation | `Navbar.jsx` uses `<a href="#home">`, `<a href="#about">`, `<a href="#contact">`, `<a href="#booking">` — smooth scroll via `scroll-behavior: smooth` in `index.css` |
-| 404 route | `<Route path="*">` renders a not-found message for any unknown URL |
-| Combined approach | React Router satisfies the routing requirement; anchor links enable one-page section travel as an alternative to separate routes |
+| React Router v6 | `BrowserRouter` envuelve la app en `main.jsx`; `Routes` y `Route` definidos en `App.jsx` |
+| Navegación entre secciones | `Navbar.jsx` usa `<a href="#home">`, `<a href="#about">`, `<a href="#contact">`, `<a href="#booking">` — scroll suave via `scroll-behavior: smooth` en `index.css` |
+| Ruta 404 | `<Route path="*">` muestra un mensaje de página no encontrada para cualquier URL desconocida |
+| Enfoque combinado | React Router satisface el requisito de enrutamiento; los enlaces de anclaje permiten la navegación entre secciones como alternativa a rutas separadas |
 
 ---
 
-## Delivery
+## Entrega
 
-Public GitHub repository submitted as the final project for UTN Frontend Development.
+Repositorio público de GitHub entregado como proyecto final del ciclo de Desarrollo Frontend de UTN.
